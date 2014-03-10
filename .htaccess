@@ -1,0 +1,10 @@
+<Files issue_token.php>
+    AuthType WebAuth
+    Require valid-user
+</Files>
+
+<FilesMatch "\.sqlite">
+    Order allow,deny
+    Deny from all
+    Satisfy All
+</FilesMatch>
