@@ -4,3 +4,33 @@ webauth-oauth2
 This is a crude WebAuth-enabled implementation of OAuth 2, that is client-side compatible with Google's implementation.
 
 `issue_token.php` must be WebAuth-protected.
+
+
+RESPONSE TO REQUEST WITH AN EXPIRED OR REVOKED TOKEN
+
+HTTP/1.1 401 Unauthorized
+Content-length: 249
+X-xss-protection: 1; mode=block
+X-content-type-options: nosniff
+Expires: Fri, 07 Mar 2014 23:02:32 GMT
+Server: GSE
+Cache-control: private, max-age=0
+Date: Fri, 07 Mar 2014 23:02:32 GMT
+X-frame-options: SAMEORIGIN
+Content-type: application/json; charset=UTF-8
+Www-authenticate: Bearer realm="https://www.google.com/accounts/AuthSubRequest", error=invalid_token
+{
+ "error": {
+   "code": 401,
+   "message": "Invalid Credentials",
+   "errors": [
+     {
+       "locationType": "header",
+       "domain": "global",
+       "message": "Invalid Credentials",
+       "reason": "authError",
+       "location": "Authorization"
+     }
+   ]
+ }
+}
